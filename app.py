@@ -1,14 +1,15 @@
 import flask
 from flask import request, jsonify
 import algorithm.vizener as vizener
+from flask import Markup
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
 
 @app.route('/', methods=['GET'])
-def home():
-    return "<h1>Distant Reading Archive</h1><p>This site is a prototype API for distant reading of science fiction novels.</p>"
+def homepage():
+    return app.send_static_file('index.html')
 
 @app.route('/encrypt/vizener', methods=['GET'])
 def encryptVizener():

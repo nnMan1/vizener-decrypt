@@ -27,5 +27,5 @@ def encrypt(text, key):
     
     encrypted = change_text_case(encrypted, text1)
 
-    return 'Key = {0} text = {1} key encrypted = {2}'.format(key, text, encrypted)
+    return encrypted
 

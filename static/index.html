@@ -1,0 +1,97 @@
+<html>
+  <header>
+    <title>Portfolio Website</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <style>
+      body {
+        display: grid;
+        grid-template-columns: 15% auto 15%;
+        grid-template-rows: 80px auto 60px 50px 50px;
+      }
+
+      h1 {
+        grid-row-start: 1;
+        grid-column-start: 2;
+      }
+
+      #commands {
+        grid-row-start: 5;
+        grid-column-start: 2;
+      }
+
+      #text_fields {
+        grid-row-start: 2;
+        grid-column-start: 2;
+
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: 30px 200px;
+        column-gap: 15px;
+      }
+
+      #ket_field {
+        grid-row-start: 3;
+        grid-column-start: 2;
+        margin-top: 20px;
+
+        display: grid;
+        grid-template-rows: 30px auto;
+      }
+
+    </style>
+  </header>
+  <body>
+    <h1>Vizenerov algoritam</h1>
+
+    <div id="text_fields">
+      <label for="decrypted_text">Originalni tekst:</label>
+      <label for="encrypted_text">Enkriptovani tekst:</label>
+      <textarea name="" id="decrypted_text"></textarea>
+      <textarea name="" id="encrypted_text"></textarea>
+    </div>
+
+    <div id="ket_field">
+      <label for="key_input">Kljuc</label>
+      <input type="text" name="" id="key_input">
+    </div>
+
+    <div id="commands">
+      <input type="radio" name="type" value="encrypt" id="encrypt">
+      <label for="encrypt">Enkriptuj</label>
+      <input type="radio" name="type" value="decrypt" id="decrypt">
+      <label for="decrypt">Dekriptuj</label>
+      <button>Pokreni</button>
+    </div>
+
+    <script>
+      let decrypted = document.querySelector("#decrypted_text")
+      let key = document.querySelector("#key_input")
+      let encrypted = document.querySelector("#encrypted_text")
+
+      function encrypt() {
+        
+        $.ajax('/encrypt/vizener', {
+            method: 'GET',
+            data: {
+              key: key.value,
+              text: decrypted.value
+            }
+        })
+        .then(
+            function success(resopnse) {
+                encrypted.value = resopnse
+            },
+        
+            function fail(data, status) {
+                alert('Doslo je do greske');
+            }
+        );
+      }
+
+      document.querySelector("button").addEventListener("click", e => {
+        encrypt()
+      })
+    </script>
+
+  </body>
+</html>

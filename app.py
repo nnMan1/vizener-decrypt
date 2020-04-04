@@ -3,13 +3,14 @@ from flask import request, jsonify
 import algorithm.vizener as vizener
 from flask import Markup
 
-app = flask.Flask(__name__)
+app = flask.Flask(__name__)sudo snap install --classic heroku
 app.config["DEBUG"] = True
 
 
 @app.route('/', methods=['GET'])
 def homepage():
-    return app.send_static_file('index.html')
+    return "Test"
+    #return app.send_static_file('index.html')
 
 @app.route('/encrypt/vizener', methods=['GET'])
 def encryptVizener():

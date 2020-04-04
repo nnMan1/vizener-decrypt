@@ -6,6 +6,9 @@ from flask import Markup
 app = flask.Flask(__name__)sudo snap install --classic heroku
 app.config["DEBUG"] = True
 
+@app.route('/favicon.ico', methods=['GET'])
+def homepage():
+    return "Test"
 
 @app.route('/', methods=['GET'])
 def homepage():

@@ -16,4 +16,3 @@ pyxdg
 SecretStorage
 six
 Werkzeug
-guincorn

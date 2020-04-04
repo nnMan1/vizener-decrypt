@@ -34,4 +34,5 @@ def decryptVizener():
 
    return vizener.decrypt(encrypted)
 
-app.run()
+if __name__=="__main__":
+    app.run()

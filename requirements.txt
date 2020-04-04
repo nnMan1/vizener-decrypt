@@ -12,6 +12,8 @@ keyring==10.6.0
 keyrings.alt==3.0
 MarkupSafe==1.1.1
 pycrypto==2.6.1
-pyxdg
+pygobject
+pyxdg==0.25
+SecretStorage
 six
 Werkzeug

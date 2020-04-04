@@ -29,3 +29,5 @@ def encrypt(text, key):
 
     return encrypted
 
+def decrypt(text):
+    return "Dekriptovani tekst"

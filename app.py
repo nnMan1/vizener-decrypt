@@ -23,8 +23,11 @@ def encryptVizener():
 
 @app.route('/decrypt/vizener', methods=['GET'])
 def decryptVizener():
-   encrypted = request.args['encrypted']
-   print(encrypted)
-   return request.args['encrypted']
+   if 'encrypted' in request.args: 
+       encrypted = request.args['encrypted']
+   else:
+       return "Error: Yout must provide text for decryption"
 
-app.run()
+   return vizener.decrypt(encrypted)
+
+app.run(host= '0.0.0.0')

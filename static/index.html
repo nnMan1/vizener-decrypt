@@ -88,8 +88,31 @@
         );
       }
 
+      function decrypt() {
+        
+        $.ajax('/decrypt/vizener', {
+            method: 'GET',
+            data: {
+              encrypted: encrypted.value
+            }
+        })
+        .then(
+            function success(resopnse) {
+                decrypted.value = resopnse
+            },
+        
+            function fail(data, status) {
+                alert('Doslo je do greske');
+            }
+        );
+      }
+
       document.querySelector("button").addEventListener("click", e => {
-        encrypt()
+        if($('input[name=type]:checked').val() == "decrypt") {
+            decrypt()
+        } else {
+            encrypt()
+        }
       })
     </script>
 

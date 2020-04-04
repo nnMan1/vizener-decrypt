@@ -13,6 +13,6 @@ keyrings.alt==3.0
 MarkupSafe==1.1.1
 pycrypto==2.6.1
 pyxdg
-SecretStorag==2.3.1
+SecretStorag
 six
 Werkzeug

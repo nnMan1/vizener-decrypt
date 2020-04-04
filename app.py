@@ -3,11 +3,11 @@ from flask import request, jsonify
 import algorithm.vizener as vizener
 from flask import Markup
 
-app = flask.Flask(__name__)sudo snap install --classic heroku
+app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 
 @app.route('/favicon.ico', methods=['GET'])
-def homepage():
+def favicon():
     return "Test"
 
 @app.route('/', methods=['GET'])
@@ -34,4 +34,4 @@ def decryptVizener():
 
    return vizener.decrypt(encrypted)
 
-app.run(host= '0.0.0.0')
+app.run()

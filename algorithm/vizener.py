@@ -72,8 +72,8 @@ def decrypt(text):
         for j in range(0, 25):
             sum = sum + (cf[j]*(cf[j]-1))
         sum = sum / (br * (br-1))
-        pl.append(abs(sum - 0.067))
-        if(abs(sum - 0.067) < 0.005):
+        pl.append(abs(sum - 0.065))
+        if(abs(sum - 0.065) < 0.008):
             break
 
     l = get_min_index(pl)

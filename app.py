@@ -2,6 +2,9 @@ import flask
 from flask import request, jsonify
 import algorithm.vizener as vizener
 from flask import Markup
+from gunicorn.http import message
+
+message.MAX_REQUEST_LINE = 0
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True

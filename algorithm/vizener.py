@@ -77,12 +77,15 @@ def decrypt(text):
             break
 
     l = get_min_index(pl)
+    print("length = {}".format(l))
     
     ret_val = ""
 
     for i in range(l+1):
+        print("offset = {}".format(i))
         cf, br = characters_count(text, l+1, i)
         i1 = get_max_index(cf)  
+        print(cf[i1])
         offset = (26 - i1 + 4) % 26
         ret_val+= chr(ord('a') + offset)
 

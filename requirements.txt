@@ -16,3 +16,4 @@ pyxdg==0.25
 SecretStorage
 six
 Werkzeug
+numpy

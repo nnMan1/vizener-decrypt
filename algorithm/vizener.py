@@ -99,7 +99,7 @@ def decrypt(text):
     text_length = len(text)
     pl = []
 
-    for i in range(1,len): #ogranicili smo se da nece duzina kljuca bit vece od 25
+    for i in range(1,text_length): #ogranicili smo se da nece duzina kljuca bit vece od 25
         cf, br = characters_count(text, i, 0)
         sum = 0
         for j in range(0, 25):
@@ -112,7 +112,6 @@ def decrypt(text):
         pl.append(abs(sum - 0.065))
         if(abs(sum - 0.065) < 0.008):
             break
-
     if(len(pl) == 0):
         return "Tekst ne moze biti dekriptovan"
 

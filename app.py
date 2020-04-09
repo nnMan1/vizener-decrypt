@@ -30,7 +30,8 @@ def decryptVizener():
    else:
        return "Error: Yout must provide text for decryption"
 
-   return vizener.decrypt(encrypted)
+   decrypted, key = vizener.decrypt(encrypted)
+   return flask.jsonify( decrypted= decrypted, key = key) 
 
 if __name__=="__main__":
     app.run()

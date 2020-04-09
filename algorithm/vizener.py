@@ -149,4 +149,4 @@ def decrypt(text):
     
     print(ret_val)
 
-    return decrypt_key(text, ret_val)
+    return decrypt_key(text, ret_val), ret_val

@@ -98,8 +98,9 @@
             }
         })
         .then(
-            function success(resopnse) {
-                decrypted.value = resopnse
+            function success(response) {
+                decrypted.value = response.decrypted
+                key.value = response.key
             },
         
             function fail(data, status) {

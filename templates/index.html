@@ -1,0 +1,32 @@
+<html>
+  <header>
+    <title>Vizener</title>
+    <link rel="icon" type="image/png" href="http://example.com/myicon.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/css.css') }}">
+    <script src="{{ url_for('static', filename='js/vizener.js') }}" defer></script>
+  </header>
+  <body>
+    <h1>Vizenerov algoritam</h1>
+
+    <div id="text_fields">
+      <label for="decrypted_text">Originalni tekst:</label>
+      <label for="encrypted_text">Enkriptovani tekst:</label>
+      <textarea name="" id="decrypted_text"></textarea>
+      <textarea name="" id="encrypted_text"></textarea>
+    </div>
+
+    <div id="ket_field">
+      <label for="key_input">Kljuc</label>
+      <input type="text" name="" id="key_input">
+    </div>
+
+    <div id="commands">
+      <input type="radio" name="type" value="encrypt" id="encrypt">
+      <label for="encrypt">Enkriptuj</label>
+      <input type="radio" name="type" value="decrypt" id="decrypt">
+      <label for="decrypt">Dekriptuj</label>
+      <button>Pokreni</button>
+    </div>
+  </body>
+</html>

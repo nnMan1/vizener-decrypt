@@ -1,0 +1,34 @@
+body {
+    display: grid;
+    grid-template-columns: 15% auto 15%;
+    grid-template-rows: 80px auto 60px 50px 50px;
+  }
+
+  h1 {
+    grid-row-start: 1;
+    grid-column-start: 2;
+  }
+
+  #commands {
+    grid-row-start: 5;
+    grid-column-start: 2;
+  }
+
+  #text_fields {
+    grid-row-start: 2;
+    grid-column-start: 2;
+
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 30px 200px;
+    column-gap: 15px;
+  }
+
+  #ket_field {
+    grid-row-start: 3;
+    grid-column-start: 2;
+    margin-top: 20px;
+
+    display: grid;
+    grid-template-rows: 30px auto;
+  }

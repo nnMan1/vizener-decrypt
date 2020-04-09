@@ -11,7 +11,7 @@ app.config["DEBUG"] = True
 
 @app.route('/', methods=['GET'])
 def homepage():
-    return app.send_static_file('index.html')
+    return flask.render_template('index.html')
 
 @app.route('/encrypt/vizener', methods=['GET'])
 def encryptVizener():

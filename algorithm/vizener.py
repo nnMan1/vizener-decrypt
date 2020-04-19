@@ -2,7 +2,6 @@ import numpy as np
 import nltk
 from nltk.corpus import words
 import math
-
 def change_text_case(text, text_case):                 # da sacuvamo velika slova 
     case_corect = ""                                   # sve prebacamo da radimo sa malim slovima ali pamtimo koje je slovo bilo veliko
 
@@ -103,7 +102,8 @@ def decrypt(text):               #glavna funkcija  kriptoanalize
     pl = []
 
     for i in range(1,math.floor(text_length/10)):
-        glavnaSuma=0
+    
+        najgoriDoSad=0
         for k in range(0,i):
             cf, br = characters_count(text, i, k)
             sum = 0
@@ -114,10 +114,11 @@ def decrypt(text):               #glavna funkcija  kriptoanalize
                 break
 
             sum = sum / (br * (br-1))
-            glavnaSuma+=sum
+            if(abs(sum - 0.06653846)> najgoriDoSad):
+                najgoriDoSad=abs(sum - 0.06653846)
 
-        glavnaSuma=glavnaSuma/i    
-        pl.append(abs(glavnaSuma - 0.06653846))      #ako naiđemo na duzinu ciji je IC 0.008 udaljen od 0.065 zavrsavamo  jer          
+           
+        pl.append(najgoriDoSad)      #ako naiđemo na duzinu ciji je IC 0.008 udaljen od 0.065 zavrsavamo  jer          
         #if(abs(sum - 0.065) < 0.008):    # ako budemo "dobar" IC za 4 ,i npr malo bolji IC za 8 i 12 i neki drugi umnozak od 4   
         #    break                        # bira se  4 jer se slovs lakse nalaze
         
@@ -172,7 +173,7 @@ def decrypt(text):               #glavna funkcija  kriptoanalize
     
     #print("||||||||| "+ret_val+" |||||||| ") # stampa se cijelu kljuc koji smo nasli  
 
-    return decrypt_key(text_org,bestKey), bestKey
+    return [decrypt_key(text_org,bestKey),bestKey]
 
 def fitnessLevel(text):
     cnt=0
@@ -206,4 +207,3 @@ def get_First_Min_Elements(array , k):
 
     print(result)
     return result
-    

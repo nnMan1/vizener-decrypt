@@ -21,7 +21,6 @@ Jinja2==2.11.1
 joblib==0.14.1
 keyring==10.6.0
 keyrings.alt==3.0
-language-selector==0.1
 lazy-object-proxy==1.4.3
 louis==3.5.0
 lxml==4.5.0

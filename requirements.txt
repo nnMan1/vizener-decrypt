@@ -30,7 +30,6 @@ netifaces==0.10.4
 nltk==3.5
 numpy==1.18.2
 olefile==0.46
-onboard==1.4.1
 pathtools==0.1.2
 pdfminer.six==20181108
 pexpect==4.2.1

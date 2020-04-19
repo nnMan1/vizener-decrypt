@@ -60,6 +60,5 @@ virtualenv==15.1.0
 watchdog==0.10.2
 Werkzeug==1.0.0
 wrapt==1.11.2
-xkit==0.0.0
 xlrd==1.2.0
 XlsxWriter==1.2.8

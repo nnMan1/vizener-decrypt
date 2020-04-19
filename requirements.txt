@@ -37,7 +37,6 @@ Pillow==7.1.1
 pycairo==1.16.2
 pycrypto==2.6.1
 pycryptodome==3.9.7
-pygobject==3.26.1
 pylint==2.4.4
 python-apt===1.6.4-elementary6-ubuntu5.0.1
 python-pptx==0.6.18

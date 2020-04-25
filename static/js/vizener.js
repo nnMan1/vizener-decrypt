@@ -48,4 +48,8 @@ document.querySelector("button").addEventListener("click", e => {
     } else {
         encrypt()
     }
-})
+});
+
+document.getElementById('directions-span').addEventListener('click', function() {
+   document.querySelector('#use-directions').classList.toggle('hidden');
+});

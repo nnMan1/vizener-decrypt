@@ -1,32 +1,53 @@
-<html>
-  <header>
-    <title>Vizener</title>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vižener</title>
     <link rel="icon" type="image/png" href="http://example.com/myicon.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/css.css') }}">
     <script src="{{ url_for('static', filename='js/vizener.js') }}" defer></script>
-  </header>
-  <body>
-    <h1>Vizenerov algoritam</h1>
+</head>
+<body>
+<div id="header">Viženerov algoritam</div>
 
-    <div id="text_fields">
-      <label for="decrypted_text">Originalni tekst:</label>
-      <label for="encrypted_text">Enkriptovani tekst:</label>
-      <textarea name="" id="decrypted_text"></textarea>
-      <textarea name="" id="encrypted_text"></textarea>
-    </div>
+<div id="text_fields">
+    <label for="decrypted_text">Originalni tekst:</label>
+    <label for="encrypted_text">Enkriptovani tekst:</label>
+    <textarea name="" id="decrypted_text"></textarea>
+    <textarea name="" id="encrypted_text"></textarea>
+</div>
 
-    <div id="ket_field">
-      <label for="key_input">Kljuc</label>
-      <input type="text" name="" id="key_input">
-    </div>
+<div id="ket_field">
+    <label for="key_input">Ključ</label>
+    <input type="text" name="" id="key_input">
+</div>
 
-    <div id="commands">
-      <input type="radio" name="type" value="encrypt" id="encrypt">
-      <label for="encrypt">Enkriptuj</label>
-      <input type="radio" name="type" value="decrypt" id="decrypt">
-      <label for="decrypt">Dekriptuj</label>
-      <button>Pokreni</button>
+<div id="commands">
+    <input type="radio" name="type" value="encrypt" id="encrypt" checked>
+    <label for="encrypt">Enkriptuj</label>
+    <input type="radio" name="type" value="decrypt" id="decrypt">
+    <label for="decrypt">Dekriptuj</label>
+    <button>Pokreni</button>
+</div>
+<div id="directions">
+    <span id="directions-span">Uputstvo</span>
+</div>
+<div id="use-directions" class="hidden">
+    <div>
+        <u>Enkripcija</u>: U polje 'Originalni tekst' unesite tekst i upišite ključ. Ukoliko već nije odabrano,
+        izaberite enkripciju i zatim kliknite dugme 'Pokreni'.
     </div>
-  </body>
+    <div class="mt-1">
+        <u>Dekripcija</u>: U polje 'Enkriptovani tekst' unesite tekst koji želite da dekriptujete. Ne unosite ključ i
+        označite 'Dekriptuj'. Zatim kliknite dugme 'Pokreni'.
+    </div>
+    <div class="mt-1">
+        <u>Napomena</u>: Koristite engleski alfabet da bi algoritam radio.
+    </div>
+</div>
+<footer id="names">
+    Velibor Došljak, Velimir Ćorović, Andrea Vujisić | Matematika i računarske nauke, PMF, UCG
+</footer>
+</body>
 </html>

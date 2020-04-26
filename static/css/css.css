@@ -55,6 +55,7 @@ textarea {
     border-radius: 10px;
     padding: 1rem;
     margin-top: 10px;
+    resize: none;
 }
 
 textarea:focus, #key_input:focus {

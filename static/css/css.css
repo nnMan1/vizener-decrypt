@@ -1,10 +1,11 @@
 body {
     display: grid;
     grid-template-columns: 15% auto 15%;
-    grid-template-rows: 80px auto 60px 50px 50px;
+    grid-template-rows: 80px auto 60px 80px 60px;
     background-image: linear-gradient(to right, #7F7FD5, #86A8E7, #91EAE4);
     color: #F0F8FF;
     min-height: 100%;
+    font-family: 'Baloo Bhaina 2', cursive;
 }
 
 #header {
@@ -47,11 +48,13 @@ body {
     padding-right: 1rem;
     height: 40px;
     border: 1px solid gray;
+    margin-top: 10px;
 }
 
 textarea {
     border-radius: 10px;
     padding: 1rem;
+    margin-top: 10px;
 }
 
 textarea:focus, #key_input:focus {

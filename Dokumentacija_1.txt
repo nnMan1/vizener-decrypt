@@ -1,0 +1,122 @@
+PROGRAM VIŽENER 
+
+FUNKCIJA change_text_case ( text : string , text_case : string )
+
+        text je string koji se sastoji od malih slova 
+        text_case je string koji može sadržati i velika slova na nekim pozicijama
+        string text se transformiše tako što se malo slovo zamjeni velikim na svim pozicijama na kojima je u stringu text_case veliko slovo
+PRIMJER 1 
+        text_case= "Danas Je Lijep Dan"
+        text=      "aaaaaaaaaaaaaaaaaa"
+        izlaz=     "AaaaaaAaaAaaaaaAaa"
+PRIMJER 2 
+        text_case= "Danas Je Lijep Dan"
+        text=      "he    some   golde"
+        izlaz=     "He    SomE   goLde"    
+
+
+*******************************************************************************************************************************
+        
+ FUNKCIJA encrypt(text : string , key:string )
+
+        text je string koji kriptujemo koristeći Viženerov algoritam 
+        key je string koji koristimo kao ključ
+        napomenimo da se sva velika slova zamjene sa malim , pa se izvrši kriptovanje , a nakon toga se pomoću originalnog teksta 
+        i funkcije change_text_case vrate velika slova na odgovarajućim pozicijama
+PRIMJER 1 
+        text=     "Today is very interesting day"
+        key=      "koliba"
+        izlaz=    "Dcoiz sg dfri tvuebsdbjnq oiz"
+
+
+*********************************************************************************************************************************
+
+FUNKCIJA characters_count( text : string , key_length : broj , offset : broj )
+        text je string u kojem se vrši brojanje 
+        key_length - dužina ključa      
+        funkcija formira  niz ret_val od 26 elemenata u kojem element na poziciji 0 jednak broju ponavljanja slova a u kriptogramu text na
+        pozicijama offset , offset+key_lenght ,.... ,offset+k*key_length,... SLično na poziciji 1 je broj ponavljanja slova b itd.
+        izlaz funkcije je niz ret_val i broj b koji je ustvari suma elemenata niza ret_val
+PRIMJER 1 
+        text=         "Today is very interesting day"
+        key_lenght=    3
+        offset=        0
+        izlaz=       ([2, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0], 9)
+
+
+************************************************************************************************************************************        
+
+FUNKCIJA get_min_index(arr : niz brojeva )
+        funkcija vraća indeks najmanjeg elementa u nizu arr
+PRIMJER 1
+        arr= [ 2, 7, 8, 99, 1, 122 ]
+        izlaz = 4
+
+************************************************************************************************************************************        
+
+FUNKCIJA get_max_index(arr : niz brojeva )
+        funkcija vraća indeks najvećeg elementa u nizu arr
+PRIMJER 1
+        arr= [ 2, 7, 8, 99, 1, 122 ]
+        izlaz = 5     
+
+************************************************************************************************************************************        
+
+FUNKCIJA shift(xs : niz brojeva , n : broj )
+        funkcija šiftuje niz xs udesno za n mjesta
+PRIMJER 1  
+        xs = [ 1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
+        n =   1      
+        izlaz= [6.0 , 1.0, 2.0, 3.0, 4.0, 5.0]
+
+*************************************************************************************************************************************
+
+FUNKCIJA decrypt_key(text :string , key: string)
+        funkcija sprovodi inverznu operaciju u odnosu na funkciju encrypt koristeći ključ key 
+PRIMJER 1     
+        text=    "Dcoiz sg dfri tvuebsdbjnq oiz"       
+        key=     "koliba"
+        izlaz=   "Today is very interesting day" 
+
+
+**************************************************************************************************************************************
+
+FUNKCIJA get_First_Min_Elements(array : niz , k : broj)
+        Iz niza array vraća niz dužine k koji se sastoji od  najmanjih indeksa (kad kažemo najmanjih indeksa mislimo da je element sa tim indeksom najmanji) 
+PRIMJER 1 
+        array= [1, 5 ,55 ,8 ,88 ,9 ,99 ,100 ,26, -20000]
+        k =    3
+        izlaz= [9,0,1]
+
+
+**************************************************************************************************************************************
+
+FUNKCIJA fitnessLevel(text : string)
+        funkcija koja nam služi da provjerimo kvalitet nekog ključa 
+        koristimo fajl riječi.txt koji sadrži  300 najčešće korišćenih riječi u engleksom jeziku 
+        funkcija vraća broj riječi iz fajla riječi.txt koje se nalaze u stringu text 
+        Ako znamo kontekst komunikacije , možemo dodati neke pogodne riječi u fajl riječi.txt    
+
+
+**************************************************************************************************************************************
+
+
+FUNKCIJA decrypt(text : string )
+        text je kriptogram 
+        ovo je glavna funkcija kriptoanalize , jedini dostupan podatak je kriptogram 
+
+        Prvo nam je cilj da odredimo dužinu ključa pa provjeravamo dužine ključa veličine do 1/10( dužina kriptograma) (nemamo poseban razlog 
+        zašto do 1/10 , ali to možemo lako promjeniti )
+
+        Za dužinu k provjeravamo sve podnizove i računamo za njih indeks koincidencije i biramo onaj koji po apsolutnoj vrijednosti 
+        najmanje odstupa od indeksa koincidencije engleksog jezika koji je jednak 0.06653846 . Dakle dužini k pridružen je broj koji 
+        predstavlja "kvalitet" te dužine ključa , što je taj broj manji ključ je "bolji" .
+
+        Gornji postupak ponovljamo za svaku dužinu ključa od 1 do 1/10( dužina kriptograma) i pridružene vrijednosti  upisujemo
+        u niz pl . 
+
+        Nakon toga uzimamo 20 dužina ključa čiji je kvalitet bio najbolji .
+
+        Za svaku od tih 20 dužina određujemo najbolju cikličnu permutaciju (ona koja ima raspodjelu najbližu raspodjelu slova poznatoj raspodjeli 
+        slova u engleskom jeziku )  za svaki podniz i tako dobijamo slovo po slovo ključa .Dakle , svakoj od 20 dužina pridružili smo po jedan ključ .
+ 	Sada tih 20 ključeva biramo onaj čiji je  fitnessLevel( decrypt_key(kriptogram,ključ)) najveći . 

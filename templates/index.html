@@ -6,16 +6,21 @@
     <link rel="icon" type="image/png" href="http://example.com/myicon.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/css.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&display=swap" rel="stylesheet">
     <script src="{{ url_for('static', filename='js/vizener.js') }}" defer></script>
 </head>
 <body>
 <div id="header">Viženerov algoritam</div>
 
 <div id="text_fields">
-    <label for="decrypted_text">Originalni tekst:</label>
-    <label for="encrypted_text">Enkriptovani tekst:</label>
-    <textarea name="" id="decrypted_text"></textarea>
-    <textarea name="" id="encrypted_text"></textarea>
+    <div class="textarea-and-label">
+        <label for="decrypted_text">Originalni tekst:</label>
+        <textarea name="" id="decrypted_text"></textarea>
+    </div>
+    <div class="textarea-and-label">
+        <label for="encrypted_text">Enkriptovani tekst:</label>
+        <textarea name="" id="encrypted_text"></textarea>
+    </div>
 </div>
 
 <div id="ket_field">
@@ -23,32 +28,58 @@
     <input type="text" name="" id="key_input">
 </div>
 
+<div id="fileInput" class="mb-2">
+    <label for="myFile" class="mr-2">Učitajte tekst iz fajla:</label>
+    <input id="myFile" type="file">
+</div>
+
 <div id="commands">
-    <input type="radio" name="type" value="encrypt" id="encrypt" checked>
-    <label for="encrypt">Enkriptuj</label>
-    <input type="radio" name="type" value="decrypt" id="decrypt">
-    <label for="decrypt">Dekriptuj</label>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&display=swap" rel="stylesheet">
-    <button>Pokreni</button>
-</div>
-<div id="directions">
-    <span id="directions-span">Uputstvo</span>
-</div>
-<div id="use-directions" class="hidden">
     <div>
-        <u>Enkripcija</u>: U polje 'Originalni tekst' unesite tekst i upišite ključ. Ukoliko već nije odabrano,
-        izaberite enkripciju i zatim kliknite dugme 'Pokreni'.
+        <input type="radio" name="type" value="encrypt" id="encrypt" checked>
+        <label for="encrypt">Enkriptuj</label>
+        <input type="radio" name="type" value="decrypt" id="decrypt">
+        <label for="decrypt">Dekriptuj</label>
     </div>
-    <div class="mt-1">
-        <u>Dekripcija</u>: U polje 'Enkriptovani tekst' unesite tekst koji želite da dekriptujete. Ne unosite ključ i
-        označite 'Dekriptuj'. Zatim kliknite dugme 'Pokreni'.
-    </div>
-    <div class="mt-1">
-        <u>Napomena</u>: Koristite engleski alfabet da bi algoritam radio.
+    <div>
+        <a href="#" id="delete-button">Briši</a>
+        <button>Pokreni</button>
     </div>
 </div>
-<footer id="names">
+<div id="info-use">
+    <span id="directions-span">Uputstvo</span>
+    <span id="info-span">Više o projektu</span>
+</div>
+<div id="hidden-divs">
+    <div id="use-directions" class="hidden">
+        <div>
+            <u>Enkripcija</u>: U polje 'Originalni tekst' unesite tekst i upišite ključ. Ukoliko već nije odabrano,
+            izaberite enkripciju i zatim kliknite dugme 'Pokreni'.
+        </div>
+        <div class="mt-1">
+            <u>Dekripcija</u>: U polje 'Enkriptovani tekst' unesite tekst koji želite da dekriptujete. Ne unosite ključ
+            i
+            označite 'Dekriptuj'. Zatim kliknite dugme 'Pokreni'.
+        </div>
+        <div class="mt-1">
+            Ukoliko želite da učitate tekst iz fajla prvo označite da li želite da vršite enkripciju ili dekripciju da
+            bi se Vaš tekst učitao u pravo polje.
+        </div>
+        <div class="mt-1">
+            <u>Napomena</u>: Koristite engleski alfabet da bi algoritam radio. Dozvoljena dužina ključa je 1/10 dužine
+            teksta.
+        </div>
+    </div>
+    <div id="use-info" class="hidden">
+        <div>
+            <a href="/documents/Dokumentacija_1.txt" download>Dokumentacija projekta</a>
+        </div>
+        <div class="mt-1">
+            Velibor Došljak, Velimir Ćorović, Andrea Vujisić | Matematika i računarske nauke, PMF, UCG
+        </div>
+    </div>
+</div>
+<!--<footer id="names">
     Velibor Došljak, Velimir Ćorović, Andrea Vujisić | Matematika i računarske nauke, PMF, UCG
-</footer>
+</footer>-->
 </body>
 </html>

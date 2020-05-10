@@ -50,6 +50,40 @@ document.querySelector("button").addEventListener("click", e => {
     }
 });
 
+var encryptedTextarea = document.getElementById('encrypted_text');
+var decryptedTextarea = document.getElementById('decrypted_text');
+var myFile = document.getElementById('myFile');
+var useDirections = document.querySelector('#use-directions');
+var useInfo = document.querySelector('#use-info');
+
 document.getElementById('directions-span').addEventListener('click', function() {
-   document.querySelector('#use-directions').classList.toggle('hidden');
+    useDirections.classList.toggle('hidden');
+    if (!useInfo.classList.contains('hidden'))
+        useInfo.classList.add('hidden');
+});
+
+document.getElementById('info-span').addEventListener('click', function() {
+    useInfo.classList.toggle('hidden');
+    if (!useDirections.classList.contains('hidden'))
+        useDirections.classList.add('hidden');
+});
+
+document.getElementById('delete-button').addEventListener('click', function() {
+    encryptedTextarea.value= "";
+    decryptedTextarea.value = "";
+    key.value = "";
+
+});
+
+var reader = new FileReader();
+reader.onload = function (e) {
+    if (document.getElementById('decrypt').checked)
+        encryptedTextarea.value = e.target.result.trim();
+    else
+        decryptedTextarea.value = e.target.result.trim();
+};
+
+myFile.addEventListener('change', function() {
+    var file = myFile.files[0];
+    reader.readAsText(file);
 });

@@ -42,7 +42,7 @@ $.ajax('/decrypt/vizener', {
 );
 }
 
-document.querySelector("button").addEventListener("click", e => {
+document.querySelector("#startProgram").addEventListener("click", e => {
     if($('input[name=type]:checked').val() == "decrypt") {
         decrypt()
     } else {
@@ -87,3 +87,28 @@ myFile.addEventListener('change', function() {
     var file = myFile.files[0];
     reader.readAsText(file);
 });
+
+function saveTextAsFile(id)
+{
+    var textToSave = document.getElementById(id).value;
+    if (textToSave) {
+        var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+        var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+        var fileNameToSaveAs = 'vizener' + '_' + id;
+
+        var downloadLink = document.createElement("a");
+        downloadLink.download = fileNameToSaveAs;
+        downloadLink.innerHTML = "Download File";
+        downloadLink.href = textToSaveAsURL;
+        downloadLink.onclick = destroyClickedElement;
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+
+        downloadLink.click();
+    }
+}
+
+function destroyClickedElement(event)
+{
+    document.body.removeChild(event.target);
+}

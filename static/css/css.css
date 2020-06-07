@@ -36,7 +36,7 @@ body {
 
     display: grid;
     grid-template-columns: auto auto;
-    grid-template-rows: 300px;
+    /*grid-template-rows: 300px;*/
     column-gap: 15px;
     margin-top: 5%;
 }
@@ -219,14 +219,14 @@ button:focus {
     margin-right: 20px;
 }
 
+.downloadTextarea {
+    height: unset;
+    width: unset;
+}
+
 @media only screen and (max-width: 991px) {
     #text_fields {
         grid-template-columns: auto;
-        grid-template-rows: 300px 300px;
-    }
-
-    #decrypted_text {
-        margin-bottom: 20px;
     }
 
     #use-directions, #use-info {

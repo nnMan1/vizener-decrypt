@@ -109,7 +109,7 @@ FUNKCIJA decrypt(text : string )
         zašto do 1/10 , ali to možemo lako promjeniti )
 
         Za dužinu k provjeravamo sve podnizove i računamo za njih indeks koincidencije i biramo onaj koji po apsolutnoj vrijednosti 
-        najmanje odstupa od indeksa koincidencije engleksog jezika koji je jednak 0.06653846 . Dakle dužini k pridružen je broj koji 
+        najvise odstupa od indeksa koincidencije engleksog jezika koji je jednak 0.06653846 . Dakle dužini k pridružen je broj koji 
         predstavlja "kvalitet" te dužine ključa , što je taj broj manji ključ je "bolji" .
 
         Gornji postupak ponovljamo za svaku dužinu ključa od 1 do 1/10( dužina kriptograma) i pridružene vrijednosti  upisujemo

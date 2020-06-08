@@ -117,8 +117,8 @@ label {
     height: 12px;
     background: #91EAE4;
     position: absolute;
-    top: 4px;
-    left: 4px;
+    top: 3px;
+    left: 3px;
     border-radius: 100%;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
@@ -164,6 +164,8 @@ button:focus {
     border: 2px solid #F0F8FF;
     border-radius: 20px;
     padding: 10px;
+    display: flex;
+    align-items: center;
 }
 
 #use-directions, #use-info {

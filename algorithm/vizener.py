@@ -1,7 +1,10 @@
 import numpy as np
 import nltk
 from nltk.corpus import words
+import string
 import math
+
+
 def change_text_case(text, text_case):                 # da sacuvamo velika slova 
     case_corect = ""                                   # sve prebacamo da radimo sa malim slovima ali pamtimo koje je slovo bilo veliko
 
@@ -21,10 +24,11 @@ def encrypt(text, key):
     encrypted = ''
 
     text1 = text
-    text = text.lower()                                 # sva velika slova smanjujemo i onda kriptujemo 
+    text = text.lower()  
+    key = key.lower()                               # sva velika slova smanjujemo i onda kriptujemo 
 
     for i in range(text_length):                                                                       #                                 
-        if text[i] <= 'z' and text[i] >= 'a':                                                          # "sabiramo" sa kljucem tekst
+        if text[i] <= 'z' and text[i] >= 'a' and key[i % key_length] >= 'a' and key[i % key_length]<='z':                                                          # "sabiramo" sa kljucem tekst
             encrypted += chr((ord(text[i]) - 2*ord('a') + ord(key[i % key_length])) % 26 + ord('a'))   #
         else:
             encrypted += text[i]
@@ -74,7 +78,6 @@ def shift(xs, n):                # funkcija za siftovanje niza xs ulijevo za n m
         e[:n] = xs[-n:]
     e[0] = f
     return e
-
 
 def decrypt_key(text, key):      #za dati kljuc key radi dekriptovanje teksta text
     key_length = len(key)
@@ -187,7 +190,6 @@ def fitnessLevel(text):
         temp=file.readline()   
 
     return cnt
-
 
 def get_First_Min_Elements(array , k):
     length = len(array)

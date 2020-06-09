@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Vižener</title>
+    <title>Vigenère cipher</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="icon" type="image/png" href="http://example.com/myicon.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -12,73 +12,74 @@
   </head>
 <body>
 <div id='main-grid-container'>
-    <div id="header">Viženerov algoritam</div>
+    <div id="header">Vigenère cipher</div>
 
     <div id="text_fields">
         <div class="textarea-and-label">
-            <label for="decrypted_text">Originalni tekst:</label>
-            <textarea name="" id="decrypted_text"></textarea>
-            <button onclick="saveTextAsFile('decrypted_text')" class="downloadTextarea">Preuzmi tekst</button>
+            <label for="decrypted_text">Original text:</label>
+            <textarea name="" id="decrypted_text" placeholder="Type something in English..."></textarea>
+            <button onclick="saveTextAsFile('decrypted_text')" class="downloadTextarea">Download original text</button>
         </div>
         <div class="textarea-and-label">
-            <label for="encrypted_text">Enkriptovani tekst:</label>
-            <textarea name="" id="encrypted_text"></textarea>
-            <button onclick="saveTextAsFile('encrypted_text')" class="downloadTextarea">Preuzmi tekst</button>
+            <label for="encrypted_text">Encrypted text:</label>
+            <textarea name="" id="encrypted_text" placeholder="Use English alphabet"></textarea>
+            <button onclick="saveTextAsFile('encrypted_text')" class="downloadTextarea">Download encrypted text</button>
         </div>
     </div>
 
     <div id="ket_field">
-        <label for="key_input">Ključ</label>
-        <input type="text" name="" id="key_input">
+        <label for="key_input">Key</label>
+        <input type="text" name="" id="key_input" placeholder="Enter key">
     </div>
 
     <div id="fileInput" class="mb-2">
-        <label for="myFile" class="mr-2">Učitajte tekst iz fajla:</label>
+        <label for="myFile" class="mr-2">Load text from file:</label>
         <input id="myFile" type="file">
     </div>
 
     <div id="commands">
         <div>
             <input type="radio" name="type" value="encrypt" id="encrypt" checked>
-            <label for="encrypt">Enkriptuj</label>
+            <label for="encrypt">Encrypt</label>
             <input type="radio" name="type" value="decrypt" id="decrypt">
-            <label for="decrypt">Dekriptuj</label>
+            <label for="decrypt">Decrypt</label>
         </div>
         <div>
-            <a href="#" id="delete-button">Briši</a>
-            <button id="startProgram">Pokreni</button>
+            <a href="#" id="delete-button">Cancel</a>
+            <button id="startProgram">Start</button>
         </div>
     </div>
     <div id="info-use">
-        <span id="directions-span">Uputstvo</span>
-        <span id="info-span">Više o projektu</span>
+        <span id="directions-span">Instructions</span>
+        <span id="info-span">More about project</span>
     </div>
     <div id="hidden-divs">
         <div id="use-directions" class="hidden">
             <div>
-                <u>Enkripcija</u>: U polje 'Originalni tekst' unesite tekst i upišite ključ. Ukoliko već nije odabrano,
-                izaberite enkripciju i zatim kliknite dugme 'Pokreni'.
+                <u>Encryption</u>: Enter your text in field 'Original text' and enter your key. Choose encryption (if
+                it's not already chosen) and click button 'Start'.
             </div>
             <div class="mt-1">
-                <u>Dekripcija</u>: U polje 'Enkriptovani tekst' unesite tekst koji želite da dekriptujete. Ne unosite ključ
-                i
-                označite 'Dekriptuj'. Zatim kliknite dugme 'Pokreni'.
+                <u>Decryption</u>: Enter your text in field 'Encrypted text'. Don't enter key. Choose decryption and
+                click button 'Start'.
             </div>
             <div class="mt-1">
-                Ukoliko želite da učitate tekst iz fajla prvo označite da li želite da vršite enkripciju ili dekripciju da
-                bi se Vaš tekst učitao u pravo polje.
+                If you want to load text from file, please choose if you want to do encryption or decryption so that
+                it is loaded into the correct field.
             </div>
             <div class="mt-1">
-                <u>Napomena</u>: Koristite engleski alfabet da bi algoritam radio. Dozvoljena dužina ključa je 1/10 dužine
-                teksta.
+                <u>Note</u>: You have to use English alphabet in order to make the algorithm work successfully. Also,
+                please don't use keys longer than 1/10 of the length of the original text.
             </div>
         </div>
         <div id="use-info" class="hidden">
             <div>
-                <a href="{{ url_for('static', filename='/documents/Dokumentacija.txt') }}" download>Dokumentacija projekta</a>
+                <a href="{{ url_for('static', filename='/documents/Dokumentacija.txt') }}" download>
+                    Project documentation
+                </a>
             </div>
             <div class="mt-1">
-                Velibor Došljak, Velimir Ćorović, Andrea Vujisić | Matematika i računarske nauke, PMF, UCG
+                Velibor Došljak, Velimir Ćorović, Andrea Vujisić | Mathematics and Computer Science, Faculty of Science and Mathematics, University of Montenegro
             </div>
         </div>
     </div>

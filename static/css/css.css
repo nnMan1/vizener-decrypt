@@ -1,11 +1,14 @@
 body {
-    display: grid;
-    grid-template-columns: 15% auto 15%;
-    grid-template-rows: 80px auto 60px 60px 50px 60px 100px;
     background-image: linear-gradient(to right, #7F7FD5, #86A8E7, #91EAE4);
     color: #F0F8FF;
     min-height: 100%;
     font-family: 'Baloo Bhaina 2', cursive;
+}
+
+#main-grid-container {
+    display: grid;
+    grid-template-columns: 15% auto 15%;
+    grid-template-rows: 80px auto 60px 60px 50px 60px 100px;
 }
 
 #header {
@@ -114,8 +117,8 @@ label {
     height: 12px;
     background: #91EAE4;
     position: absolute;
-    top: 4px;
-    left: 4px;
+    top: 3px;
+    left: 3px;
     border-radius: 100%;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
@@ -161,6 +164,8 @@ button:focus {
     border: 2px solid #F0F8FF;
     border-radius: 20px;
     padding: 10px;
+    display: flex;
+    align-items: center;
 }
 
 #use-directions, #use-info {
@@ -224,7 +229,17 @@ button:focus {
     width: unset;
 }
 
+.spinner-border {
+    margin: auto;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -30px;
+    visibility: hidden;
+}
+
 @media only screen and (max-width: 991px) {
+    
     #text_fields {
         grid-template-columns: auto;
     }

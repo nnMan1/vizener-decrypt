@@ -1,45 +1,68 @@
 let decrypted = document.querySelector("#decrypted_text")
 let key = document.querySelector("#key_input")
 let encrypted = document.querySelector("#encrypted_text")
+let spinner = document.querySelector('.spinner-border')
 
 function encrypt() {
 
-$.ajax('/encrypt/vizener', {
-    method: 'GET',
-    data: {
-        key: key.value,
-        text: decrypted.value
-    }
-})
-.then(
-    function success(resopnse) {
-        encrypted.value = resopnse
-    },
+    document.querySelector('.spinner-border').style.visibility = "visible"
+    encrypted.value = ""
 
-    function fail(data, status) {
-        alert('Doslo je do greske');
-    }
-);
+
+    $.ajax('/encrypt/vizener', {
+        method: 'GET',
+        data: {
+            key: key.value,
+            text: decrypted.value
+        }
+    })
+    .then(
+        function success(resopnse) {
+            setTimeout(function(){
+                encrypted.value = resopnse
+                document.querySelector('.spinner-border').style.visibility = "hidden"
+            },500);
+        },
+
+        function fail(data, status) {
+            setTimeout(function(){  
+                alert('Doslo je do greske');
+                document.querySelector('.spinner-border').style.visibility = "hidden" 
+            }, 500);
+           
+        }
+    );
 }
+ 
 
 function decrypt() {
 
-$.ajax('/decrypt/vizener', {
-    method: 'GET',
-    data: {
-        encrypted: encrypted.value
-    }
-})
-.then(
-    function success(response) {
-        decrypted.value = response.decrypted
-        key.value = response.key
-    },
+    document.querySelector('.spinner-border').style.visibility = "visible"
+    decrypted.value = ""
+    key.value = ""
 
-    function fail(data, status) {
-        alert('Doslo je do greske');
-    }
-);
+    $.ajax('/decrypt/vizener', {
+            method: 'GET',
+            data: {
+                encrypted: encrypted.value
+            }
+        })
+        .then(
+            function success(response) {
+                setTimeout(function(){
+                    decrypted.value = response.decrypted
+                    key.value = response.key
+                    document.querySelector('.spinner-border').style.visibility = "hidden"
+                }, 500);
+            },
+
+            function fail(data, status) {
+                setTimeout(function(){  
+                    alert('Doslo je do greske');
+                    document.querySelector('.spinner-border').style.visibility = "hidden"
+                }, 500);
+            }
+        )
 }
 
 document.querySelector("#startProgram").addEventListener("click", e => {
@@ -58,12 +81,14 @@ var useInfo = document.querySelector('#use-info');
 
 document.getElementById('directions-span').addEventListener('click', function() {
     useDirections.classList.toggle('hidden');
+    window.scrollTo(0,document.body.scrollHeight);
     if (!useInfo.classList.contains('hidden'))
         useInfo.classList.add('hidden');
 });
 
 document.getElementById('info-span').addEventListener('click', function() {
     useInfo.classList.toggle('hidden');
+    window.scrollTo(0,document.body.scrollHeight);
     if (!useDirections.classList.contains('hidden'))
         useDirections.classList.add('hidden');
 });
